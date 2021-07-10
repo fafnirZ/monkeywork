@@ -1,0 +1,8 @@
+.Search-container {
+    background-color: #d2d2d2;
+    display: flex;
+    justify-content: center;
+    margin: 5em 6em 3em; /* 5em top, 6em l&r, 3em bottom*/
+    padding: 3em; /*3em all around*/
+
+}

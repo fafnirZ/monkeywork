@@ -1,6 +1,7 @@
-export default function Nav(props) {
+import './nav.css'
+export function Nav(props) {
     return(
-        <div>
+        <div className="nav-container">
             hi
         </div>
     )

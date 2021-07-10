@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { Nav } from './components/Nav/nav.jsx';
-import { Main } from './components/Main/main.jsx'
+import { Nav } from './components/Nav/nav';
+import { SearchBar } from './components/SearchBar/searchBar'
 
 function App() {
   return (
@@ -10,10 +9,7 @@ function App() {
         <Nav>hi</Nav>
       </header>
       <body className="App-container">
-        <Main>hi</Main>
-        <div className="placeholder">
-          hi
-        </div>
+        <SearchBar/>
       </body>
     </div>
   );

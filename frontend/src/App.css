@@ -1,7 +1,17 @@
+.App {
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
 .App-header {
+  display:flex;
+  max-height: 10vh;
   background: #F45B69;
 }
 
 .App-container {
   background: #FFE9BA;
+  height: 90vh;
+  display:flex;
+  flex-direction: column;
 }
