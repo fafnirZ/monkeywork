@@ -9,8 +9,8 @@ export function Nav(props) {
             {buttons.map((i)=>{
                 return (
                     <div className="nav-button-container">
-                        <button onClick={()=> {
-                            view.toggleView();
+                        <button onClick={(e)=> {
+                            view.toggleView(e.currentTarget.innerText);
                         }}>
                             {i}
                         </button>

@@ -8,8 +8,14 @@ import { ViewContext } from './components/GlobalContexts/viewContext';
 function App() {
   const [view, setView] = React.useState('personalise');
 
-  const toggleView = () => {
-    setView(view === 'search' ? 'personalise' : 'search' );
+  const toggleView = (currentView) => {
+    if (currentView === "Shopping list compiler") {
+      setView('search');
+    }
+    else if (currentView === "My list") {
+      setView('personalise');
+    }
+
   }
 
   return (
