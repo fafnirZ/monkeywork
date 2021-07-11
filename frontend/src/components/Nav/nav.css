@@ -1,3 +1,11 @@
 .nav-container {
     height: 10vh;
+    display:flex;
+    flex-direction: row;
+    grid-gap: 90vw;
+}
+
+.nav-button-container > button {
+    display:flex;
+    flex-direction: row;
 }

@@ -1,8 +1,23 @@
+import React from 'react';
+import { ViewContext } from '../GlobalContexts/viewContext';
 import './nav.css'
 export function Nav(props) {
+    const [buttons, setButtons] = React.useState(['Shopping list compiler','My list'])
+    const view = React.useContext(ViewContext);
     return(
         <div className="nav-container">
-            hi
+            {buttons.map((i)=>{
+                return (
+                    <div className="nav-button-container">
+                        <button onClick={()=> {
+                            view.toggleView();
+                        }}>
+                            {i}
+                        </button>
+                    </div>
+                )
+            })}
+
         </div>
     )
 };
