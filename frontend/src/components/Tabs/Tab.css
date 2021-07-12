@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+.custom-tab .tab-content{
+  min-height: 100px;
+  border-top: none;
+  color: white;
+  padding: 50px 30px;
+  background-color: #59C3C3;
+  height: 90.5vh;
+  font-size: 30px;
+}
+
+button {
+  text-decoration: none;
+}
+
+.individual-tabs {
+  display:flex;
+  justify-content: space-around;
+  font-family: "Nunito", monospace;
+  color: white;
+  border-color: rgb(255, 255, 255);
+  border-radius: 10px 10px 0px 0px;
+  border-width: 0px;
+  background-color:#59C3C3;
+  font-weight: 700;
+  padding: 15px 32px;
+  font-size: 30px;
+
+}
+
+.individual-tabs:hover {
+  background-color: #9ddfdf;
+}
+
+.tab-bar {
+  margin-top: 100px;
+}
