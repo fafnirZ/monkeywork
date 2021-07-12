@@ -6,13 +6,15 @@ export function Nav(props) {
     const view = React.useContext(ViewContext);
     return(
         <div className="nav-container">
-            {buttons.map((i)=>{
+            {buttons.map((element)=>{
                 return (
                     <div className="nav-button-container">
                         <button onClick={(e)=> {
                             view.toggleView(e.currentTarget.innerText);
                         }}>
-                            {i}
+                            <b>
+                                {element}
+                            </b>
                         </button>
                     </div>
                 )
