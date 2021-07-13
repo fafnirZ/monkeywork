@@ -1,64 +1,51 @@
-//type rafce
-import React, { useEffect, useState } from 'react'
-import "./Tab.css";
+import { useEffect, useState } from 'react'
+import './Tab.css';
 
-const Tab = ({ children, active = 0}) => {
-  //stores the active tab and the function for updating the state
-  const [activeTab, setActiveTab] = useState(active);
-  //this stores the data for our tabs and the function to update the data
-  const [tabsData, setTabsData] = useState([]);
 
-  //TYPE useEffect and press TAB then it AUTOCOMPLETES
+// () => == function()
+// anonymous function - unnamed function basically
+
+export default function Tabs(props) {
+  const [view, setView] = useState('myList');
+
+  useEffect(function() {
+    document.getElementById('1').addEventListener('click', () => {
+      setView('myList')
+    })
+    document.getElementById('2').addEventListener('click', () => {
+      setView('Recipes')
+    })
+  }, []);
+  // [] brackets store states,
+  // if empty: only executes once.
+
+  //this keeps track of the state view
+  //and executes when the state changes
   useEffect(() => {
-    let data = [];
+    console.log(view)
+  }, [view])
 
-    //define array for storing data
-    React.Children.forEach(children, (element) => {
-      //if it's a valid component,
-      if (!React.isValidElement(element)) return;
+  return(
+    <div>
+      <div>
+        <button id='1'>
+          MyList
+        </button>
 
-      const {
-        props: {tab, children },
-      } = element;
-      data.push({tab, children});
-    });
-    //this updates the state
-    setTabsData(data);
-  }, [children]);
-
-  return (
-    //using HTML:
-    <div className="custom-tab" >
-      <ul className="nav nav-tabs tab-bar">
-        { tabsData.map(({tab}, idx) => (
-          <li className="nav-item">
-            {/* setting the active tab */}
-            <button className={`navlink ${idx === activeTab ? "active" : ""}`} 
-            className="individual-tabs"
-            href="#"
-            onClick={()=> setActiveTab(idx)}
-            >
-              {tab}
-            </button>
-          </li>
-        ))}
-      </ul>
-        
-        <div className="tab-content">
-          {tabsData[activeTab] && tabsData[activeTab].children}
+        <button id='2'>
+          Recipes
+        </button>
+      </div>
+      {(view === 'myList') && 
+        <div className='myList-background'>
+          Hi jess
         </div>
-
-
-
+      }
+      {(view === 'Recipes') && 
+        <div className='recipes-background'>
+          {'This is for you <3'}
+        </div>
+      }
     </div>
-  )
+  );
 }
-
-const TabPane = ({children}) => {
-  return {children}
-}
-
-//define static component
-Tab.TabPane = TabPane;
-
-export default Tab
