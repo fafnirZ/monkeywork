@@ -5,7 +5,10 @@ import { Items } from '../Personalise/personalise';
 export function Popup(props) {
 
     // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
-    const [inputIngredients, setInputIngredients] = React.useState({"flour": {"value": "1 cup", "checked": false}});
+    const [inputIngredients, setInputIngredients] = React.useState({});
+    const url = props.url;
+    const img = props.img;
+
 
 
     const popRef = React.useRef();
@@ -19,9 +22,17 @@ export function Popup(props) {
 
     },[])
 
+    //fetch data and set
     React.useEffect(()=> {
         //fetch data from backend and set data as inputIngredient state
-
+        fetch(url)
+        .then(response => {
+          return response.json();
+        })
+        .then(data =>  {
+          // console.log(data)
+          setInputIngredients(data);
+        })
     },[]);
 
 
@@ -50,11 +61,13 @@ export function Popup(props) {
                 {Object.entries(inputIngredients).map(([key,value])=>{
                     return (
                         <Items 
-                            key={key} 
+                            keyy={key} 
                             value={value} 
                             style={{'width': '80%',
                                      'margin': '1rem',
                                     }}
+                            checkBox={false}
+                            contentEditable={true}
                         />
                     )
                 })} 

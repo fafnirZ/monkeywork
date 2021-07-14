@@ -6,6 +6,8 @@ export function SearchBar(props) {
 
     const [search, setSearch] = useState('');
     const [popUp, setPopUp] = React.useState(false);
+    const [url, setUrl] = React.useState('');
+    const [img, setImg] = React.useState(null);
 
     const popUpOpen = () => {
         setPopUp(true);
@@ -13,6 +15,10 @@ export function SearchBar(props) {
     const popUpClose = () => {
         setPopUp(false);
     }
+
+    React.useEffect(()=> {
+        setUrl('https://fafnirz.github.io/xxe/hosted/placeholder.json')
+    },[])
 
     const [disable, setDisable] = useState(true);
     function handleDisable(search) {
@@ -46,7 +52,7 @@ export function SearchBar(props) {
                         <img src='Circle-arrow.svg'/>             
                     </div>
                 </div>
-                {popUp && <Popup handlePopUp={popUpClose} />}
+                {popUp && <Popup handlePopUp={popUpClose} url={url} img={img}/>}
             </div>
             
         </div>

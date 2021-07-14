@@ -19,17 +19,6 @@ function App() {
     }
   }
 
-  React.useEffect(()=> {
-    fetch('https://fafnirz.github.io/xxe/hosted/placeholder.json')
-    .then(response => {
-      return response.json();
-    })
-    .then(data =>  {
-      // console.log(data)
-    })
- 
-  },[])
-
 
 
   return (

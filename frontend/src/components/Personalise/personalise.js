@@ -38,7 +38,7 @@ export function Personalise(props) {
                     console.log(`key: ${key}`)
                     console.log(`value ${value}`)
                     return (
-                        <Items keyy={key} value={value}/>
+                        <Items keyy={key} value={value} checkBox={true}/>
                     )
                 })}       
             </div>
@@ -87,8 +87,9 @@ export function Items(props) {
 
     return (
 
-        <div className="checklist-item-container" style={props.style}>
-            {<Checkbox ingredient = {props.keyy}/>}
+        <div className="checklist-item-container" style={props.style} checkBox={props.checkBox}
+            contentEditable={props.contentEditable}>
+            {(props.checkBox) && <Checkbox ingredient = {props.keyy}/>}
             <p>{props.value.value}</p>
             <p>{props.keyy}</p>
             {/* <Delete ingredient={key}></Delete> */}
