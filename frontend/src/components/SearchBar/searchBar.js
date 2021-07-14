@@ -1,6 +1,6 @@
 import './searchBar.css';
 import React, { onClick, useState } from 'react';
-import Popup from './popup.js';
+import { Popup } from '../Popup/popup.js';
 
 export function SearchBar(props) {
 
@@ -44,9 +44,6 @@ export function SearchBar(props) {
                     </div>
                 </div>
 
-            </div>
-            <div>
-                <Popup search={search} popUp={popUp} closePopUp={closePopUp}/>
             </div>
         </div>
     );
