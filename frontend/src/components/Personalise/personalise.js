@@ -1,5 +1,6 @@
 import './personalise.css';
-import '../Tabs/Tab'
+import Tab from '../Tabs/Tab';
+
 export function Personalise(props) {
     return (
         <div className="personalise-container">
