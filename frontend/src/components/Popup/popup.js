@@ -9,8 +9,6 @@ export function Popup(props) {
     const url = props.url;
     const img = props.img;
 
-
-
     const popRef = React.useRef();
 
     React.useEffect(()=> {
@@ -22,9 +20,9 @@ export function Popup(props) {
 
     },[])
 
-    //fetch data and set
+    // fetch data and set
     React.useEffect(()=> {
-        //fetch data from backend and set data as inputIngredient state
+        // fetch data from backend and set data as inputIngredient state
         fetch(url)
         .then(response => {
           return response.json();
@@ -37,11 +35,24 @@ export function Popup(props) {
 
 
     const handleClick = (e) => {
-
         try {
             const popup = popRef.current;
+            
+            if(e.target.id === 'submit') {
+                // handle submit
+                // call post function to backend
+
+                // call post function then await response 
+                // from the backend and update local storage
+
+                // close popup
+                props.handlePopUp();
+                return;
+            }
+
             if(!(popup.contains(e.target))) {
                 props.handlePopUp()
+                return;
             }
         } catch (err) {
             console.log(err);
@@ -78,7 +89,7 @@ export function Popup(props) {
                         servings
                         </b>
                     </div>
-                    <button>
+                    <button id="submit" onClick={handleClick}>
                         Add to shopping list
                     </button>
                 </div>

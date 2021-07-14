@@ -13,6 +13,14 @@ export function Personalise(props) {
     const [items, setItems] = useState({});
     const [view, setView] = useState('myList');
 
+    const handleSubmit = (keyy, newValue) => {
+        try {
+            console.log(newValue);
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
     React.useEffect(()=> {
 
         try {
@@ -38,7 +46,7 @@ export function Personalise(props) {
                     console.log(`key: ${key}`)
                     console.log(`value ${value}`)
                     return (
-                        <Items keyy={key} value={value} checkBox={true}/>
+                        <Items keyy={key} value={value} checkBox={true} handleSubmit={handleSubmit}/>
                     )
                 })}       
             </div>
@@ -50,7 +58,6 @@ export function Personalise(props) {
             </div>
         }
         </>
-    
 
     )
 }
@@ -59,39 +66,42 @@ export function Personalise(props) {
 im just going to export this
 */
 export function Items(props) {
-    // key = ingredient
-    // value = amount
-    //const {key, value, style} = props;
-    /*
-    const [loaded, setLoaded] = React.useState(false);
+    const [editable, setEditable] = React.useState(false);
+    const itemRef = React.useRef();
+    const inputRef = React.useRef();
 
-    React.useEffect(() => {
-        //forces it to load
-        const timer = setTimeout(() => {
-            if (props.value !== undefined && props.key != undefined) {
-                setLoaded(true);
-            }
-            console.log(props.value)
-            console.log(props.keyy)
-        }, 100);
-        return () => clearTimeout(timer);
-      }, []);
-      */
-    /*
-    React.useEffect(()=> {
-        if (props.value !== undefined && props.key != undefined) {
-            setLoaded(true);
+    const toggleEdit = (e) => {
+        if(editable) {
+            const newValue = inputRef.current.data
+            const {data, value} = inputRef.current
+            console.log(value);
+            props.handleSubmit(props.keyy, newValue);
         }
-    },[])
-    */
+        setEditable(!editable);
+    }
+
 
     return (
 
         <div className="checklist-item-container" style={props.style} checkBox={props.checkBox}
-            contentEditable={props.contentEditable}>
+            contentEditable={props.contentEditable}
+            ref={itemRef}
+           
+            >
             {(props.checkBox) && <Checkbox ingredient = {props.keyy}/>}
-            <p>{props.value.value}</p>
-            <p>{props.keyy}</p>
+            {editable && <input ref={inputRef}
+                defaultValue={props.value.value+' '+props.keyy}
+                
+            />}
+            {!editable && 
+                <>
+                <p>{props.value.value}</p>
+                <p>{props.keyy}</p>
+                </>
+            }
+            <div className="edit-button" onClick={toggleEdit}>
+                <img src="edit.svg"/>
+            </div>
             {/* <Delete ingredient={key}></Delete> */}
         </div>
 

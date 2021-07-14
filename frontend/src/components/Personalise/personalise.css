@@ -63,3 +63,14 @@
 .delete-button:hover {
     background-color: #ff0015;
 }
+
+.edit-button {
+    width: 2em;
+    height: 2em;
+}
+
+
+.edit-button > img {
+    object-fit: cover;
+    width: 100%;
+}
