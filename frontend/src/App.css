@@ -10,8 +10,26 @@
 }
 
 .App-container {
-  background: #FFE9BA;
+  background: #F45B69;
   height: 90vh;
   display:flex;
   flex-direction: column;
+}
+
+
+.Home-container {
+  height: 90vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.drip {
+  display:flex;
+}
+
+.drip > img {
+  object-fit: cover;
+  width: 100%;
+  background-color: #FFE9BA;
 }
