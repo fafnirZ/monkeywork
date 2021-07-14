@@ -34,20 +34,31 @@ export function Personalise(props) {
 
         {Object.entries(items).map(([key,value])=>{
             return (
-                <div className="checklist-item-container">
-                    <Checkbox ingredient={key}></Checkbox> 
-                    {value["value"]} {key}
-                    {/* <Delete ingredient={key}></Delete> */}
-                    </div>
-                    )
-                })}
+                <Items key={key} value={value}/>
+            )
+        })}
                     
                 
-            </div>
+        </div>
 
     
 
     )
 }
 
+
+export function Items(props) {
+    const {key, value} = props;
+    return (
+        <>
+            <div className="checklist-item-container">
+                <Checkbox ingredient={key}></Checkbox>
+                {value["value"]} {key}
+                {/* <Delete ingredient={key}></Delete> */}
+            </div>
+        </>
+
+    )
+
+}
 
