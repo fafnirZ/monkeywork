@@ -1,8 +1,42 @@
 .Search-container {
-    background-color: #d2d2d2;
+    background-color: #F45B69;
     display: flex;
-    justify-content: center;
-    margin: 5em 6em 3em; /* 5em top, 6em l&r, 3em bottom*/
+    flex-direction: column;
+    margin: 5em 5em 3em; /* 5em top, 6em l&r, 3em bottom*/
     padding: 3em; /*3em all around*/
 
+    position: relative;
+}
+
+.Search-prompt {  
+    height: em;
+    color: white;
+}
+
+.Search-prompt>text {
+    font-size: 20px;
+}
+
+.Search-bar {
+    background-color: #FFFFFF;
+
+    width: 900px;
+    border-radius: 25px;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    box-shadow: 7px 7px 0 -3px #4062BB;
+
+    padding: 0.5em;
+}
+
+.testbox {
+    grid-gap: 2em;
+    display: flex;
+}
+
+.Search-button {
+    background: url('Circle-arrow.svg');
+    width: 30px;
+    height: 30px;
 }
