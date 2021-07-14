@@ -7,6 +7,7 @@ import { ViewContext } from './components/GlobalContexts/viewContext';
 import { Popup } from './components/Popup/popup.js';
 
 function App() {
+
   const [view, setView] = React.useState('personalise');
 
   const toggleView = (selectedView) => {
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <ViewContext.Provider value={{view, toggleView}}>
         <header className="App-header">
           <Nav/>
