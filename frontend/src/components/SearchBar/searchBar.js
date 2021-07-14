@@ -30,23 +30,17 @@ export function SearchBar(props) {
                         placeholder="What do you want?"
                         onChange={handleDisable}
                     />
-                    <div>
-                        <button 
-                            className="Search-button-camera"
-                            onClick={() => {setPopUp(true)}}
-                            disabled={disable}
+                    <div
+                        className="Search-button-camera"
+                        onClick={() => {setPopUp(true)}}
                         >
-                            <img src="Circle-camera.svg"/>
-                        </button>
+                        <img src="Circle-camera.svg"/>
                     </div>
-                    <div>
-                        <button 
-                            className="Search-button-arrow"
-                            onClick={() => {setPopUp(true)}}
-                            disabled={disable}
+                    <div
+                        className="Search-button-arrow"
+                        onClick={() => {setPopUp(true)}}
                         > 
-                            <img src='Circle-arrow.svg'/>
-                        </button>                    
+                        <img src='Circle-arrow.svg'/>             
                     </div>
                 </div>
 

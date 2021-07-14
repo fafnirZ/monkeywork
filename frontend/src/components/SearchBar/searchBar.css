@@ -35,6 +35,10 @@
     display: flex;
 }
 
-.Search-button-arrow, .Search-button-camera {
+.Search-button-arrow {
+    background-color: #F45B69;
+}
 
+.Search-button-camera {
+    background-color: #F45B69;
 }
