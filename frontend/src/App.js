@@ -5,7 +5,7 @@ import { SearchBar } from './components/SearchBar/searchBar';
 import { Personalise } from './components/Personalise/personalise';
 
 function App() {
-  const [view, setView] = React.useState('search')
+  const [view, setView] = React.useState('personalise')
   return (
     <div className="App">
       <header className="App-header">
