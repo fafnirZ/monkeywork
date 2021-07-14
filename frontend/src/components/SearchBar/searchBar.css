@@ -35,8 +35,6 @@
     display: flex;
 }
 
-.Search-button {
-    background: url('Circle-arrow.svg');
-    width: 30px;
-    height: 30px;
+.Search-button-arrow, .Search-button-camera {
+
 }

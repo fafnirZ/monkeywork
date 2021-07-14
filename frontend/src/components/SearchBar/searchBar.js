@@ -35,10 +35,13 @@ export function SearchBar(props) {
                             className="Search-button-camera"
                             onClick={() => {setPopUp(true)}}
                             disabled={disable}
-                        ></button>
+                        >
+                            <img src="Circle-camera.svg"/>
+                        </button>
                     </div>
                     <div>
                         <button 
+                            className="Search-button-arrow"
                             onClick={() => {setPopUp(true)}}
                             disabled={disable}
                         > 
