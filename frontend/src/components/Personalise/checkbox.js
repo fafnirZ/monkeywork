@@ -22,7 +22,6 @@ export function Checkbox(props) {
                 const isItChecked = changedData[props.ingredient]["checked"];
                 setChecked(isItChecked);
             }
-
         } catch (err) {
             console.log(err);
         }
