@@ -1,4 +1,65 @@
-.personalise-container {
+@font-face {
+    font-family: Libre-Franklin;
+    src: url(https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap);
+}
+
+.shopping-checklist-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1em;
+    
     height: 90vh;
-    background: #59C3C3;
+    padding: 2vw 3em 2vw 3em;
+    background: #87D4D4;
+    margin-top: -15px;
+
+}
+.checklist-item-container {
+    display: flex;
+    grid-gap: 1em;
+    width: 50vw;
+    font-family: Libre-Franklin, sans-serif;
+    padding: 0.5em 3em 0.5em 3em;
+    background-color: #FFFFFF;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0px 0.25vw #F45B69;
+}
+
+/* Style the "Add" button */
+.unchecked-button {
+    width: 1em;
+    height: 1em;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+
+.checked-button {
+    width: 1em;
+    height: 1em;
+    background-color: #000;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+
+.check-button:hover {
+    background-color: #f37c86;
+}
+.check-button.checked {
+    background-color:#000;
+}
+
+.delete-button {
+    width: 2em;
+    height: 2em;
+    background-color: #8741c0;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+.delete-button:hover {
+    background-color: #ff0015;
 }

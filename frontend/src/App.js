@@ -4,8 +4,10 @@ import { Nav } from './components/Nav/nav';
 import { SearchBar } from './components/SearchBar/searchBar';
 import { Personalise } from './components/Personalise/personalise';
 import { ViewContext } from './components/GlobalContexts/viewContext';
+import { Popup } from './components/Popup/popup.js';
 
 function App() {
+
   const [view, setView] = React.useState('personalise');
 
   const toggleView = (selectedView) => {
@@ -15,11 +17,24 @@ function App() {
     else if (selectedView === "My list") {
       setView('personalise');
     }
-
   }
+
+  React.useEffect(()=> {
+    fetch('https://fafnirz.github.io/xxe/hosted/placeholder.json')
+    .then(response => {
+      return response.json();
+    })
+    .then(data =>  {
+      // console.log(data)
+    })
+ 
+  },[])
+
+
 
   return (
     <div className="App">
+      
       <ViewContext.Provider value={{view, toggleView}}>
         <header className="App-header">
           <Nav/>
@@ -29,6 +44,7 @@ function App() {
         {(view === "search") && 
           <div className="Home-container">
             <SearchBar/>
+            <Popup/>
             <div className="drip">
               <img src='main.svg'/>
             </div>
