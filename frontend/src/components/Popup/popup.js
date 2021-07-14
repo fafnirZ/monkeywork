@@ -51,7 +51,14 @@ export function Popup(props) {
                 </p>
                 {Object.entries(inputIngredients).map(([key,value])=>{
                     return (
-                        <Items key={key} value={value}/>
+                        <Items 
+                            key={key} 
+                            value={value} 
+                            style={{'width': '80%',
+                                     'margin': '1rem',
+                                     
+                                    }}
+                        />
                     )
                 })} 
                 <div className="bottom">

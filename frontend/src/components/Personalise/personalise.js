@@ -59,11 +59,11 @@ im just going to export this
 export function Items(props) {
     // key = ingredient
     // value = amount
-    let {key, value} = props;
+    let {key, value, style} = props;
     return (
         <>
             {value && 
-            <div className="checklist-item-container">
+            <div className="checklist-item-container" style={style}>
                 <Checkbox ingredient={key}/>
                 {value.value} {key}
                 {/* <Delete ingredient={key}></Delete> */}
