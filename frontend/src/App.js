@@ -9,14 +9,6 @@ import { Popup } from './components/Popup/popup.js';
 function App() {
 
   const [view, setView] = React.useState('personalise');
-  const [popUp, setPopUp] = React.useState(false);
-
-  const popupOpen = () => {
-    setPopUp(true);
-  }
-  const popupClose = () => {
-    setPopUp(false);
-  }
 
   const toggleView = (selectedView) => {
     if (selectedView === "Shopping list compiler") {
@@ -42,7 +34,6 @@ function App() {
 
   return (
     <div className="App">
-      
       <ViewContext.Provider value={{view, toggleView}}>
         <header className="App-header">
           <Nav/>
@@ -51,8 +42,7 @@ function App() {
       <body className="App-container">
         {(view === "search") && 
           <div className="Home-container">
-            <SearchBar handlePopup={popupOpen}/>
-            {popUp && <Popup handlePopup={popupClose}/>}
+            <SearchBar />
             <div className="drip">
               <img src='main.svg'/>
             </div>

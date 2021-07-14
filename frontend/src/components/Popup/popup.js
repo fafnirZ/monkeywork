@@ -30,7 +30,7 @@ export function Popup(props) {
         try {
             const popup = popRef.current;
             if(!(popup.contains(e.target))) {
-                props.handlePopup();
+                props.handlePopUp()
             }
         } catch (err) {
             console.log(err);
@@ -54,7 +54,6 @@ export function Popup(props) {
                             value={value} 
                             style={{'width': '80%',
                                      'margin': '1rem',
-                                     
                                     }}
                         />
                     )
