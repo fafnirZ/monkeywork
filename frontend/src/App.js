@@ -26,9 +26,18 @@ function App() {
         </header>
       </ViewContext.Provider>
       <body className="App-container">
-        {(view === "search") && <SearchBar/>}
+        {(view === "search") && 
+          <div className="Home-container">
+            <SearchBar/>
+            <div className="drip">
+              <img src='main.svg'/>
+            </div>
+          </div>
+        }
         {(view === "personalise") && <Personalise/>}
+        
       </body>
+
 
     </div>
   );
