@@ -9,11 +9,11 @@ export default function Tabs(props) {
   const [view, setView] = useState('myList');
 
   useEffect(function() {
-    document.getElementById('1').addEventListener('click', () => {
+    document.getElementById('myList').addEventListener('click', () => {
       setView('myList')
     })
-    document.getElementById('2').addEventListener('click', () => {
-      setView('Recipes')
+    document.getElementById('history').addEventListener('click', () => {
+      setView('history')
     })
   }, []);
   // [] brackets store states,
@@ -28,21 +28,21 @@ export default function Tabs(props) {
   return(
     <div>
       <div>
-        <button id='1'>
+        <button id='myList' className='myList'>
           MyList
         </button>
 
-        <button id='2'>
-          Recipes
+        <button id='history' className='history'>
+          History
         </button>
       </div>
       {(view === 'myList') && 
-        <div className='myList-background'>
+        <div className='myList-content'>
           Hi jess
         </div>
       }
-      {(view === 'Recipes') && 
-        <div className='recipes-background'>
+      {(view === 'history') && 
+        <div className='history-content'>
           {'This is for you <3'}
         </div>
       }
