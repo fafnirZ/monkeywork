@@ -22,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <ViewContext.Provider value={{view, toggleView}}>
         <header className="App-header">
           <Nav/>

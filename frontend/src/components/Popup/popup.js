@@ -26,8 +26,6 @@ export function Popup(props) {
         } catch (err) {
             console.log(err);
         }
-
-
     }
 
 
