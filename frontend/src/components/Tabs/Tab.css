@@ -1,26 +1,32 @@
+.active {
+  max-height: 20vh;
+}
+
 #myList {
-  display: flex;
-  justify-content: center;
   background-color: #59C3C3;
   border: none;
   color: white;
-  padding: 20px 12%;
-  border-radius: 15px 15px 0px 0px;
+  padding: 20px;
+  align-self: stretch;
+  width: 50%;
+  flex: 1 1 auto;
+  border-radius: 15px 15px 15px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 35px;
   font-weight: bold;
-  position: relative;
-  
 }
 
 #history {
-  background-color: #4062BB; /* Green */
+  background-color: #4062BB;
   border: none;
   color: white;
-  padding: 20px 12%;
-  border-radius: 15px 15px 0px 0px;
+  padding: 20px;
+  align-self: stretch;
+  width: 50%;
+  flex: 1 1 auto;
+  border-radius: 15px 15px 0px 15px;
   text-align: center;
   text-decoration: none;
   font-size: 35px;
@@ -31,10 +37,16 @@
   background-color: #59C3C3;
   text-align:left;
   padding-bottom: 80vh;
+  padding-top: 15px;
 }
 .history-content {
   background-color: #4062BB;
   color: white;
   text-align:initial;
-  padding-bottom: 80vh;  /*padding of 80%*/
+  padding-bottom: 80vh;
+  padding-top: 15px;
+}
+
+#content-box {
+  margin-top: -15px;
 }

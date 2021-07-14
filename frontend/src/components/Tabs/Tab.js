@@ -5,7 +5,7 @@ import './Tab.css';
 // () => == function()
 // anonymous function - unnamed function basically
 
-export default function Tabs(props) {
+export default function Tab(props) {
   const [view, setView] = useState('myList');
 
   useEffect(function() {
@@ -27,7 +27,7 @@ export default function Tabs(props) {
 
   return(
     <div>
-      <div>
+      <div className='active'>
         <button id='myList' className='myList'>
           MyList
         </button>
@@ -36,16 +36,19 @@ export default function Tabs(props) {
           History
         </button>
       </div>
-      {(view === 'myList') && 
-        <div className='myList-content'>
-          Hi jess
-        </div>
-      }
-      {(view === 'history') && 
-        <div className='history-content'>
-          {'This is for you <3'}
-        </div>
-      }
+      <div id='content-box'>
+        {(view === 'myList') && 
+          <div className='myList-content'>
+            Hi jess
+          </div>
+        }
+        {(view === 'history') && 
+          <div className='history-content'>
+            {'This is for you <3'}
+          </div>
+        }
+      </div>
+
     </div>
   );
 }
