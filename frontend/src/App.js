@@ -4,6 +4,7 @@ import { Nav } from './components/Nav/nav';
 import { SearchBar } from './components/SearchBar/searchBar';
 import { Personalise } from './components/Personalise/personalise';
 import { ViewContext } from './components/GlobalContexts/viewContext';
+import { Popup } from './components/Popup/popup.js';
 
 function App() {
   const [view, setView] = React.useState('personalise');
@@ -29,6 +30,7 @@ function App() {
         {(view === "search") && 
           <div className="Home-container">
             <SearchBar/>
+            <Popup/>
             <div className="drip">
               <img src='main.svg'/>
             </div>
