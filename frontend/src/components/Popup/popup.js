@@ -18,7 +18,12 @@ export function Popup(props) {
             window.removeEventListener('click', handleClick);
         })            
 
-    })
+    },[])
+
+    React.useEffect(()=> {
+        //fetch data from backend and set data as inputIngredient state
+
+    },[]);
 
 
     const handleClick = (e) => {
