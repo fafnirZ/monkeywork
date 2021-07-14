@@ -6,24 +6,22 @@ import './Tab.css';
 // anonymous function - unnamed function basically
 
 export default function Tab(props) {
-  const [view, setView] = useState('myList');
 
   useEffect(function() {
     document.getElementById('myList').addEventListener('click', () => {
-      setView('myList')
+      props.setView('myList')
     })
     document.getElementById('history').addEventListener('click', () => {
-      setView('history')
+      props.setView('history')
     })
+
   }, []);
   // [] brackets store states,
   // if empty: only executes once.
 
   //this keeps track of the state view
   //and executes when the state changes
-  useEffect(() => {
-    console.log(view)
-  }, [view])
+ 
 
   return(
     <div>
@@ -31,7 +29,6 @@ export default function Tab(props) {
         <button id='myList' className='myList'>
           MyList
         </button>
-
         <button id='history' className='history'>
           History
         </button>
