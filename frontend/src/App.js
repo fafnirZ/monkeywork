@@ -7,6 +7,7 @@ import { ViewContext } from './components/GlobalContexts/viewContext';
 import { Popup } from './components/Popup/popup.js';
 
 function App() {
+
   const [view, setView] = React.useState('personalise');
 
   const toggleView = (selectedView) => {
