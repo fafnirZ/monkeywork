@@ -4,10 +4,6 @@ import { Popup } from '../Popup/popup.js';
 
 export function SearchBar(props) {
 
-    const [popUp, setPopUp] = useState(false);
-    const closePopUp = () => setPopUp(false);
-    const openPopUp = () => setPopUp(true);
-
     const [search, setSearch] = useState('');
 
     const [disable, setDisable] = useState(true);
@@ -32,13 +28,13 @@ export function SearchBar(props) {
                     />
                     <div
                         className="Search-button-camera"
-                        onClick={() => {setPopUp(true)}}
+                        onClick={props.handlePopup}
                         >
                         <img src="Circle-camera.svg"/>
                     </div>
                     <div
                         className="Search-button-arrow"
-                        onClick={() => {setPopUp(true)}}
+                        onClick={props.handlePopup}
                         > 
                         <img src='Circle-arrow.svg'/>             
                     </div>

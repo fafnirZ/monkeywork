@@ -3,7 +3,6 @@ import React from 'react'
 import { Items } from '../Personalise/personalise';
 
 export function Popup(props) {
-    const [open, setOpen] = React.useState(true);
 
     // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
     const [inputIngredients, setInputIngredients] = React.useState({"flour": {"value": "1 cup", "checked": false}});
@@ -31,7 +30,7 @@ export function Popup(props) {
         try {
             const popup = popRef.current;
             if(!(popup.contains(e.target))) {
-                setOpen(false);
+                props.handlePopup();
             }
         } catch (err) {
             console.log(err);
@@ -41,8 +40,7 @@ export function Popup(props) {
 
 
     return (
-        (
-            (open) && 
+        
             <div className="popup" ref={popRef}>
                 <p>
                     <b>
@@ -73,7 +71,7 @@ export function Popup(props) {
                     </button>
                 </div>
             </div>
-        )
+        
 
     )
 }
