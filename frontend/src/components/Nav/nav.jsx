@@ -9,7 +9,7 @@ export function Nav(props) {
             {buttons.map((element)=>{
                 return (
                     <div className="nav-button-container">
-                        <button onClick={(e)=> {
+                        <button onClick={(e)=>{
                             view.toggleView(e.currentTarget.innerText);
                         }}>
                             <b>

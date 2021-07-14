@@ -1,0 +1,26 @@
+.popup {
+    background-color: white;
+    height: 70vh;
+    width: clamp(30vw, 35vw, 40vw);
+    position:absolute;
+
+    border-radius: 5px;
+    border:1px solid black;
+
+    display:flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    justify-self: center;
+    align-self: center;
+
+    justify-content: space-between;
+}
+
+
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
