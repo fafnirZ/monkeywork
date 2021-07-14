@@ -17,8 +17,20 @@ function App() {
     else if (selectedView === "My list") {
       setView('personalise');
     }
-
   }
+
+  React.useEffect(()=> {
+    fetch('https://fafnirz.github.io/xxe/hosted/placeholder.json')
+    .then(response => {
+      return response.json();
+    })
+    .then(data =>  {
+      // console.log(data)
+    })
+ 
+  },[])
+
+
 
   return (
     <div className="App">
