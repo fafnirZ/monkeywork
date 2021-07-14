@@ -26,9 +26,7 @@ export function Personalise(props) {
 
     return (
         <>
-        <div className="personalise-container">
-            <Tab/>
-        </div>
+        <Tab/>
         <div className="shopping-checklist-container">
 
 

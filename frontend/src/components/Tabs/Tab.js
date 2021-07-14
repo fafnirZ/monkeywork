@@ -36,18 +36,6 @@ export default function Tab(props) {
           History
         </button>
       </div>
-      <div id='content-box'>
-        {(view === 'myList') && 
-          <div className='myList-content'>
-            Hi jess
-          </div>
-        }
-        {(view === 'history') && 
-          <div className='history-content'>
-            {'This is for you <3'}
-          </div>
-        }
-      </div>
 
     </div>
   );
