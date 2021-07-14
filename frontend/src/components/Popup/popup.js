@@ -3,6 +3,7 @@ import React from 'react'
 export function Popup(props) {
     const [open, setOpen] = React.useState(true);
 
+    const popRef = React.useRef();
 
     React.useEffect(()=> {
         window.addEventListener('click', handleClick);
@@ -16,9 +17,17 @@ export function Popup(props) {
 
 
     const handleClick = (e) => {
-        if(e.target.className !== 'popup') {
-            setOpen(false);
+
+        try {
+            const popup = popRef.current;
+            if(!(popup.contains(e.target))) {
+                setOpen(false);
+            }
+        } catch (err) {
+            console.log(err);
         }
+
+
     }
 
 
@@ -26,7 +35,7 @@ export function Popup(props) {
     return (
         (
             (open) && 
-            <div className="popup">
+            <div className="popup" ref={popRef}>
                 <p>
                     <b>
                     here are the ingredients we found...   
