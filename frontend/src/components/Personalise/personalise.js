@@ -5,25 +5,18 @@ import { Checkbox } from './checkbox';
 import { Delete } from './delete';
 export function Personalise(props) {
     // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
-    const { inputIngredients } = props
     const [items, setItems] = useState({});
-    /* 
-    if input ingredients prop is not passed in
-    then take ingredients from local storage
-    this is so we can reuse the component in 2 different 
-    locations
-    */
 
     React.useEffect(()=> {
-        if(inputIngredients === undefined) {
-            try {
-                let ingredients = JSON.parse(localStorage["ingredients"]);
-                console.log(ingredients)
-                setItems(ingredients);
-            } catch(err) {
-                console.log('there is no ingredients')
-            }
+
+        try {
+            let ingredients = JSON.parse(localStorage["ingredients"]);
+            console.log(ingredients)
+            setItems(ingredients);
+        } catch(err) {
+            console.log('there is no ingredients')
         }
+
     },[])
 
 
@@ -36,8 +29,7 @@ export function Personalise(props) {
             return (
                 <Items key={key} value={value}/>
             )
-        })}
-                    
+        })}    
                 
         </div>
 
@@ -46,18 +38,22 @@ export function Personalise(props) {
     )
 }
 
-
+/*
+im just going to export this
+*/
 export function Items(props) {
-    const {key, value} = props;
+    // key = ingredient
+    // value = amount
+    let {key, value} = props;
     return (
         <>
+            {value && 
             <div className="checklist-item-container">
-                <Checkbox ingredient={key}></Checkbox>
-                {value["value"]} {key}
+                <Checkbox ingredient={key}/>
+                {value.value} {key}
                 {/* <Delete ingredient={key}></Delete> */}
-            </div>
+            </div>}
         </>
-
     )
 
 }

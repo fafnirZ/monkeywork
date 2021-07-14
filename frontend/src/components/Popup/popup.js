@@ -1,10 +1,13 @@
 import './popup.css'
 import React from 'react'
-import { Personalise } from '../Personalise/personalise';
+import { Items } from '../Personalise/personalise';
 
 export function Popup(props) {
     const [open, setOpen] = React.useState(true);
-    const [inputIngredients, setInputIngredients] = React.useState({});
+
+    // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
+    const [inputIngredients, setInputIngredients] = React.useState({"flour": {"value": "1 cup", "checked": false}});
+
 
     const popRef = React.useRef();
 
@@ -41,7 +44,11 @@ export function Popup(props) {
                     here are the ingredients we found...   
                     </b>
                 </p>
-                <Personalise inputIngredients={inputIngredients}/>
+                {Object.entries(inputIngredients).map(([key,value])=>{
+                    return (
+                        <Items key={key} value={value}/>
+                    )
+                })} 
                 <div className="bottom">
                     <div>
                         <input type="text" placeholder="1" style={{'width':'30px', 'margin':'4px'}}/>
