@@ -35,11 +35,14 @@ export function Popup(props) {
             })
         } else {
             //setInputIngredients(props.ingredients)
-            console.log(props.ingredients)
+            const removedIngredients = parseResults(props.ingredients)
+
+            // change list to dictionary
+ 
             let ing = new Object();
             props.ingredients.map((e)=> {
                 //console.log(e);
-                ing[e] = {};
+                ing[e] = {'value':''};
             })
             //console.log(ing)
             setInputIngredients(ing)
@@ -47,6 +50,17 @@ export function Popup(props) {
 
  
     },[]);
+
+    const parseResults = (list) => {
+        list.forEach((item, index) => {
+            if(item === "") {
+                list.splice(index, 1)
+            }
+        })
+        return list;
+    }
+
+
 
 
     const handleClick = (e) => {

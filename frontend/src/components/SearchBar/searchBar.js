@@ -43,18 +43,22 @@ export function SearchBar(props) {
 
     }
 
-    /*
+    
     const parseResults = () => {
-        
+        list.forEach((index, item)=> {
+            console.log(item)
+        })
     }
-    */
+    
 
     const OCRthenPopUp = (e) => {
         console.log(img)
         parseImage(img)
         .then(()=> {
+            parseResults();
             popUpOpen();
         })
+
     }
 
 
