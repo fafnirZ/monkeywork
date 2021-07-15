@@ -36,6 +36,13 @@ export function Popup(props) {
         } else {
             //setInputIngredients(props.ingredients)
             console.log(props.ingredients)
+            let ing = new Object();
+            props.ingredients.map((e)=> {
+                //console.log(e);
+                ing[e] = {};
+            })
+            //console.log(ing)
+            setInputIngredients(ing)
         }
 
  

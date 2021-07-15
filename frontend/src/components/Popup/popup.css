@@ -15,6 +15,8 @@
     align-self: center;
     box-shadow: 3px 3px 0px #4062BB;
     margin-top: -10%;
+
+    overflow: scroll;
 }
 
 .popupItems {

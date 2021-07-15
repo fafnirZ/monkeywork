@@ -1,5 +1,5 @@
 import './searchBar.css';
-// import Tesseract from "tesseract.js"
+import Tesseract from "tesseract.js"
 import React, { onClick, useState } from 'react';
 import { Popup } from '../Popup/popup.js';
 
