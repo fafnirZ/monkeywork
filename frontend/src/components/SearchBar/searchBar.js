@@ -1,4 +1,5 @@
 import './searchBar.css';
+import Tesseract from "tesseract.js"
 import React, { onClick, useState } from 'react';
 import { Popup } from '../Popup/popup.js';
 
@@ -16,6 +17,45 @@ export function SearchBar(props) {
         setPopUp(false);
     }
 
+    /*
+    const parseImage = async (image) => {
+        Tesseract.recognize(
+            image,
+            'eng',
+            {logger: m => {
+                if (m.status === "recognizing text") {
+                    setLoading(m.progress)
+                }
+            }}
+        ).then(({data: {text} }) => {
+            const lines = text.split("\n")
+            setList(lines)
+            console.log(lines)
+        })
+
+    }
+    */
+
+    const OCRthenPopUp = () => {
+
+    }
+
+
+    const handlePaste = (e) => {
+        const item = e.clipboardData.items[0]
+        const image = item.getAsFile()
+        console.log(image)
+        console.log(typeof image)
+        setImage(true);
+        let fr = new FileReader();
+        fr.onload = function() {
+            document.getElementById('imgPlaceHolder').src = fr.result;
+        }
+        fr.readAsDataURL(image)
+          
+    }
+
+
     React.useEffect(()=> {
         setUrl('https://fafnirz.github.io/xxe/hosted/placeholder.json')
     },[])
@@ -24,6 +64,9 @@ export function SearchBar(props) {
     function handleDisable(search) {
         setDisable(search.target.value === '');
     }
+
+    const [image, setImage] = useState(false);
+
     return (
         <div>
             <div className="Search-container">
@@ -31,14 +74,27 @@ export function SearchBar(props) {
                     I want...
                 </div>
                 <div className="testbox">
+
                     <input                     
                         className="Search-bar"
                         type="text"
                         id="search"
                         placeholder="What do you want?"
                         onChange={handleDisable}
-                        
+                        onPaste={handlePaste}
                     />
+                        {image && 
+                        <img id="imgPlaceHolder" 
+                        style={{'width': '70px', 
+                                'height': '70px',
+                                'position': 'absolute',
+                                'display': 'flex',
+                                'margin-left': '20%',
+                                'margin-top': '5px'
+                                }}
+                        />}
+   
+                   
                     <div
                         className="Search-button-camera"
                         onClick={popUpOpen}
