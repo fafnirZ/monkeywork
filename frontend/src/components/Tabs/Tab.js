@@ -27,13 +27,12 @@ export default function Tab(props) {
     <div>
       <div className='active'>
         <button id='myList' className='myList'>
-          MyList
+          My List
         </button>
         <button id='history' className='history'>
           History
         </button>
       </div>
-
     </div>
   );
 }

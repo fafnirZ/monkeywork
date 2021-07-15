@@ -1,6 +1,6 @@
 import './personalise.css';
 import Tab from '../Tabs/Tab';
-
+import '../Tabs/Tab.css';
 import React, {useState} from 'react';
 import { react } from '@babel/types';
 // import { Checkbox } from './checkbox';
@@ -9,10 +9,12 @@ import { react } from '@babel/types';
 
 export function Personalise(props) {
     // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
+    // {"websites": ["link1", "link2", "link3"]};
     const [items, setItems] = useState({});
     const [view, setView] = useState('myList');
     const [force, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [site, setSite] = useState([]);
 
     const handleSubmit = (prevState, newState) => {
         try {
@@ -58,17 +60,30 @@ export function Personalise(props) {
             let ingredients = JSON.parse(localStorage["ingredients"]);
             // console.log(ingredients)
             setItems(ingredients);
+            // let websites = JSON.parse(localStorage["websites"]);
+            // setSites(websites);
+
 
         } catch(err) {
             console.log('there is no ingredients')
         }
 
     },[])
-    
 
+    React.useEffect(()=> {
+        let website = JSON.parse(localStorage["websites"]);
+        let current = site;
+        console.log(current);
+        Array.prototype.push.apply(current,website);
 
+        // console.log(site);
+        console.log(current);
+        setSite(current);
+        console.log(site);
+
+    },[])
     return (
-        <>
+        <div className="margins">
         <Tab setView={setView}/>
 
         {(view === "myList") &&
@@ -92,11 +107,30 @@ export function Personalise(props) {
 
         }
         {(view === 'history') && 
-            <div>
-                {view}
+            <div className="history-container">
+                
+                {site.map((value)=>{
+                    if (value !== '') {
+                    return (
+                        <a href={value}>
+                            <Items 
+                            keyy={value}
+                            value={{'value': ''}}
+                            editButton={false}
+                            deleteButton={false}
+                            style={{
+                                'color': 'black',
+                                'word-wrap': 'break-word',
+                        }}
+                            >
+                            </Items>
+                        </a>
+                    )}
+                })}
+
             </div>
         }
-        </>
+        </div>
 
     )
 }

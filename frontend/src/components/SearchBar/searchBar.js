@@ -1,11 +1,11 @@
 import './searchBar.css';
-import Tesseract from "tesseract.js"
+//import Tesseract from "tesseract.js"
 import React, { onClick, useState } from 'react';
 import { Popup } from '../Popup/popup.js';
 
 export function SearchBar(props) {
 
-    const [search, setSearch] = useState('');
+    // const [search, setSearch] = useState('');
     const [popUp, setPopUp] = React.useState(false);
     const [url, setUrl] = React.useState('');
     const [img, setImg] = React.useState();
@@ -19,32 +19,28 @@ export function SearchBar(props) {
     const popUpClose = () => {
         setPopUp(false);
     }
-
     
     const parseImage = async (image) => {
 
         return new Promise((resolve,reject)=> {
-            Tesseract.recognize(
-                image,
-                'eng',
-                {logger: m => {
-                    if (m.status === "recognizing text") {
-                        //setLoading(m.progress)
-                    }
-                }}
-            ).then(({data: {text} }) => {
-                const lines = text.split("\n")
-                setList(lines)
-                resolve({});
-            })
+            // Tesseract.recognize(
+            //     image,
+            //     'eng',
+            //     {logger: m => {
+            //         if (m.status === "recognizing text") {
+            //             //setLoading(m.progress)
+            //         }
+            //     }}
+            // ).then(({data: {text} }) => {
+            //     const lines = text.split("\n")
+            //     setList(lines)
+            //     resolve({});
+            // })
         })
 
 
 
     }
-
-
-    
 
     const OCRthenPopUp = () => {
         console.log(img)
@@ -79,7 +75,8 @@ export function SearchBar(props) {
                     setImg(imagee)
                     //console.log(img)
                 } else {
-                    console.log(item)
+
+                    setUrl(e.clipboardData.getData('text/plain'));
                 }
 
             }
@@ -120,19 +117,30 @@ export function SearchBar(props) {
     }
 
 
-
-
-    React.useEffect(()=> {
-        setUrl('https://fafnirz.github.io/xxe/hosted/placeholder.json')
-    },[])
-
     const [disable, setDisable] = useState(true);
     function handleDisable(search) {
         setDisable(search.target.value === '');
     }
 
-    
-
+    // const handleURL = (prevURL, newURL) => {
+    const handleURL = () => {  
+        
+        // setUrl();
+        let websites = JSON.parse(localStorage["websites"]); 
+        console.log(url);
+        // try {
+        
+        // console.log(typeof websites);
+        
+        // if (prevURL !== newURL) {
+        //     websites.push(newURL);
+        // }
+        websites.push(url);
+        localStorage.setItem("websites",JSON.stringify(websites));
+        // } catch(err) {
+        //     console.log(err);
+        // }
+    }
     return (
         <div>
             <div className="Search-container">
@@ -170,8 +178,9 @@ export function SearchBar(props) {
                     </div>
                     <div
                         className="Search-button-arrow"
-                        onClick={popUpOpen}
-                        > 
+                        // onClick={popUpOpen}
+                        onClick={function(event){ popUpOpen(); handleURL()}}>
+                        {/* >  */}
                         <img src='Circle-arrow.svg'/>             
                     </div>
                 </div>

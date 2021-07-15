@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Libre-Franklin;
+  src: url(https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap);
+}
+
 .active {
   max-height: 20vh;
 }
@@ -16,6 +21,7 @@
   display: inline-block;
   font-size: 35px;
   font-weight: bold;
+  z-index: 6;
 }
 
 #history {
@@ -31,18 +37,54 @@
   text-decoration: none;
   font-size: 35px;
   font-weight: bold;
+  z-index: 6;
 }
 
-.myList-content {
-  background-color: #59C3C3;
-  text-align:left;
-  padding-bottom: 80vh;
-  padding-top: 15px;
-}
-.history-content {
+.history-container {
   background-color: #4062BB;
   color: white;
   text-align:initial;
   padding-bottom: 80vh;
   padding-top: 15px;
+  margin-top: -15px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1em;
+  
+  height: 90vh;
+  padding: 50px 3em 2vw 3em;
+}
+
+.history-item-container {
+  display: flex;
+  grid-gap: 1em;
+  width: 50vw;
+  font-family: Libre-Franklin, sans-serif;
+  padding: 0.5em 3em 0.5em 3em;
+  background-color: #FFFFFF;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px 0.25vw #F45B69;
+  color:#000;
+  text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+  color: red;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
 }

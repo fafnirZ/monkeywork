@@ -3,13 +3,16 @@
     src: url(https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap);
 }
 
+.margins {
+    margin-top: -15px;
+}
+
 .shopping-checklist-container {
     display: flex;
     flex-direction: column;
     grid-gap: 1em;
-    
     height: 90vh;
-    padding: 2vw 3em 2vw 3em;
+    padding: 50px 3em 2vw 3em;
     background: #87D4D4;
     margin-top: -15px;
 
@@ -55,7 +58,7 @@
 .delete-button {
     width: 2em;
     height: 2em;
-    background-color: #white;
+    background-color: #FFFFFF;
     cursor: pointer;
 
     border-radius: 3px;
