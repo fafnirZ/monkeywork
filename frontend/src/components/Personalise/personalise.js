@@ -66,7 +66,12 @@ export function Personalise(props) {
                     console.log(`key: ${key}`)
                     console.log(`value ${value}`)
                     return (
-                        <Items keyy={key} value={value} checkBox={true} handleSubmit={handleSubmit} forceUpdate={forceUpdate}/>
+                        <Items keyy={key} 
+                        value={value} 
+                        checkBox={true} 
+                        handleSubmit={handleSubmit} 
+                        forceUpdate={forceUpdate}
+                        editButton={true}/>
                     )
                 })}       
             </div>
@@ -141,9 +146,12 @@ export function Items(props) {
                 </div>
                 
             }
-            <div className="edit-button" onClick={toggleEdit}>
-                <img src="edit.svg"/>
-            </div>
+            {props.editButton &&
+                <div className="edit-button" onClick={toggleEdit}>
+                    <img src="edit.svg"/>
+                </div>
+            }
+            
             {/* <Delete ingredient={key}></Delete> */}
         </div>
 
