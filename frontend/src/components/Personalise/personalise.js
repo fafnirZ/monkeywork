@@ -177,7 +177,7 @@ export function Items(props) {
                 </div>
             }
             
-            {props.deleteButton && <div className="delete-button" ingredient={props.keyy} onClick={clickDelete}/>}
+            {props.deleteButton && <div className="delete-button" ingredient={props.keyy} onClick={clickDelete}><img src="delete.svg"/></div>}
         </div>
 
     )
