@@ -83,6 +83,12 @@ export function Popup(props) {
                         },
                         body: JSON.stringify(inputIngredients)
                     })
+                    .then(response => {
+                        response.json()
+                    })
+                    .then(data => {
+                        console.log(data);
+                    })
                     //call ocr done
                     props.OCRDone();
 
