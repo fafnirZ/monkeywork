@@ -22,7 +22,7 @@
     grid-gap: 1em;
     width: 50vw;
     font-family: Libre-Franklin, sans-serif;
-    padding: 0.5em 3em 0.5em 3em;
+    padding: 0.5em 0.5em 0.5em 3em;
     background-color: #FFFFFF;
     border: 2px solid #000;
     border-radius: 10px;
@@ -58,19 +58,22 @@
 .delete-button {
     width: 2em;
     height: 2em;
-    background-color: #8741c0;
+    background-color: #white;
     cursor: pointer;
-    border: 1px solid #000;
+
     border-radius: 3px;
 }
-.delete-button:hover {
-    background-color: #ff0015;
+
+.delete-button > img {
+    object-fit: cover;
+    width: 100%;
 }
 
 .edit-button {
     width: 2em;
     height: 2em;
     margin-left: auto;
+    cursor: pointer;
 }
 
 

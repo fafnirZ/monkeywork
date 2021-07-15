@@ -8,6 +8,7 @@ export function Popup(props) {
     const [inputIngredients, setInputIngredients] = React.useState({});
     const url = props.url;
     const img = props.img;
+    //const ingredients = props.ingredients
 
     const popRef = React.useRef();
 
@@ -22,16 +23,44 @@ export function Popup(props) {
 
     // fetch data and set
     React.useEffect(()=> {
-        // fetch data from backend and set data as inputIngredient state
-        fetch(url)
-        .then(response => {
-          return response.json();
-        })
-        .then(data =>  {
-          // console.log(data)
-          setInputIngredients(data);
-        })
+        if(! props.ingredients) {
+            // fetch data from backend and set data as inputIngredient state
+            fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data =>  {
+                // console.log(data)
+                setInputIngredients(data);
+            })
+        } else {
+            //setInputIngredients(props.ingredients)
+            const removedIngredients = parseResults(props.ingredients)
+
+            // change list to dictionary
+ 
+            let ing = new Object();
+            props.ingredients.map((e)=> {
+                //console.log(e);
+                ing[e] = {'value':''};
+            })
+            //console.log(ing)
+            setInputIngredients(ing)
+        }
+
+ 
     },[]);
+
+    const parseResults = (list) => {
+        list.forEach((item, index) => {
+            if(item === "") {
+                list.splice(index, 1)
+            }
+        })
+        return list;
+    }
+
+
 
 
     const handleClick = (e) => {
@@ -44,8 +73,30 @@ export function Popup(props) {
 
                 // call post function then await response 
                 // from the backend and update local storage
+                if(props.ingredients) {
+                    //post to backend
+                    fetch('https://localhost:5000/request', {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(inputIngredients)
+                    })
+                    .then(response => {
+                        response.json()
+                    })
+                    .then(data => {
+                        console.log(data);
+                    })
+                    //call ocr done
+                    props.OCRDone();
+
+                }
+
 
                 // close popup
+
                 props.handlePopUp();
                 return;
             }

@@ -164,10 +164,10 @@ export function Items(props) {
             >
             {/*(props.checkBox) && <Checkbox ingredient = {props.keyy}/>*/}
             {editable && 
-            <>
-            <input ref={valueRef} defaultValue={props.value.value} style={{'width': '30%'}}/>
-            <input ref={keyRef} defaultValue={props.keyy} style={{'width':'40%'}}/>                
-            </>
+                <>
+                <input ref={valueRef} defaultValue={props.value.value} style={{'width': '30%'}}/>
+                <input ref={keyRef} defaultValue={props.keyy} style={{'width':'40%'}}/>                
+                </>
             }
             {!editable && 
                 <div>
@@ -181,7 +181,7 @@ export function Items(props) {
                 </div>
             }
             
-            {props.deleteButton && <div className="delete-button" ingredient={props.keyy} onClick={clickDelete}/>}
+            {props.deleteButton && <div className="delete-button" ingredient={props.keyy} onClick={clickDelete}><img src="delete.svg"/></div>}
         </div>
 
     )
