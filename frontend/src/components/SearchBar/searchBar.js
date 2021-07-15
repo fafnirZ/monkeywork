@@ -1,5 +1,5 @@
 import './searchBar.css';
-import Tesseract from "tesseract.js"
+// import Tesseract from "tesseract.js"
 import React, { onClick, useState } from 'react';
 import { Popup } from '../Popup/popup.js';
 
@@ -79,7 +79,7 @@ export function SearchBar(props) {
                         className="Search-bar"
                         type="text"
                         id="search"
-                        placeholder="What do you want?"
+                        placeholder="Paste a recipe link or screenshot here!"
                         onChange={handleDisable}
                         onPaste={handlePaste}
                     />
