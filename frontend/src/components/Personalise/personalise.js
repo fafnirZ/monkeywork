@@ -4,7 +4,6 @@ import Tab from '../Tabs/Tab';
 import React, {useState} from 'react';
 import { react } from '@babel/types';
 // import { Checkbox } from './checkbox';
-import { Delete } from './delete';
 
 
 
@@ -41,6 +40,18 @@ export function Personalise(props) {
         }
     }
 
+    const handleDelete = (prevState) => {
+        // change the checked data in localStorage
+        const {prevKey}  = prevState
+        let changedData = JSON.parse(localStorage.getItem("ingredients"));   //lol dont delete this line
+        
+        delete changedData[prevKey];
+        localStorage.setItem("ingredients",JSON.stringify(changedData));
+        setItems(changedData)
+        console.log(items.length)
+        forceUpdate();
+    }
+    
     React.useEffect(()=> {
 
         try {
@@ -52,8 +63,8 @@ export function Personalise(props) {
             console.log('there is no ingredients')
         }
 
-    },[force])
-
+    },[])
+    
 
 
     return (
@@ -70,8 +81,11 @@ export function Personalise(props) {
                         value={value} 
                         checkBox={true} 
                         handleSubmit={handleSubmit} 
+                        handleDelete={handleDelete}
                         forceUpdate={forceUpdate}
-                        editButton={true}/>
+                        editButton={true}
+                        deleteButton={true}
+                        />
                     )
                 })}       
             </div>
@@ -96,6 +110,8 @@ export function Items(props) {
     const valueRef = React.useRef();
     const keyRef = React.useRef();
     const [displayValue, setDisplayValue] = React.useState('');
+    const prevKey = props.keyy;
+    const prevValue = props.value.value;
 
     const toggleEdit = (e) => {
         if(editable) {
@@ -116,6 +132,15 @@ export function Items(props) {
           
         }
         setEditable(!editable);
+    }
+
+
+    const clickDelete = (e) => {
+        try{
+            props.handleDelete({prevKey})   
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     React.useEffect(() => {
@@ -152,7 +177,7 @@ export function Items(props) {
                 </div>
             }
             
-            {/* <Delete ingredient={key}></Delete> */}
+            {props.deleteButton && <div className="delete-button" ingredient={props.keyy} onClick={clickDelete}/>}
         </div>
 
     )

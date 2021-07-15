@@ -80,6 +80,7 @@ export function Popup(props) {
                             checkBox={false}
                             contentEditable={true}
                             editButton={false}
+                            deleteButton={false}
                         />
                     )
                 })} 
