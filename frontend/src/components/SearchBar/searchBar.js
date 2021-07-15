@@ -78,6 +78,8 @@ export function SearchBar(props) {
                     //console.log(imagee)
                     setImg(imagee)
                     //console.log(img)
+                } else {
+                    console.log(item)
                 }
 
             }
@@ -86,6 +88,38 @@ export function SearchBar(props) {
         }
 
     }
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        try {
+            const item = e.dataTransfer.items[0]
+            const imagee = item.getAsFile()
+            if(item !== null) {
+                if(item.type !== 'text/plain') {
+                    setImage(true);
+                    let fr = new FileReader();
+                    fr.onload = function() {
+                        document.getElementById('imgPlaceHolder').src = fr.result;
+                    }
+                    fr.readAsDataURL(imagee)
+                    //sets img
+                    //console.log(imagee)
+                    setImg(imagee)
+                    //console.log(img)
+                } else {
+                    console.log(item)
+                }
+
+            
+            }
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
+
 
 
     React.useEffect(()=> {
@@ -114,6 +148,7 @@ export function SearchBar(props) {
                         placeholder="Paste a recipe link or screenshot here!"
                         onChange={handleDisable}
                         onPaste={handlePaste}
+                        onDrop={handleDrop}
                     />
                         {image && 
                         <img id="imgPlaceHolder" 
