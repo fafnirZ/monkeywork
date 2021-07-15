@@ -1,6 +1,6 @@
 import './personalise.css';
 import Tab from '../Tabs/Tab';
-
+import '../Tabs/Tab.css';
 import React, {useState} from 'react';
 import { react } from '@babel/types';
 // import { Checkbox } from './checkbox';
@@ -9,6 +9,7 @@ import { react } from '@babel/types';
 
 export function Personalise(props) {
     // {"flour": {"value": "1 cup", "checked": false},"sugar": {"value": "300g", "checked": true},"butter": {"value": "500g", "checked": false}}
+    // {"websites": ["link1", "link2", "link3"]};
     const [items, setItems] = useState({});
     const [view, setView] = useState('myList');
     const [force, updateState] = React.useState();
@@ -58,6 +59,8 @@ export function Personalise(props) {
             let ingredients = JSON.parse(localStorage["ingredients"]);
             // console.log(ingredients)
             setItems(ingredients);
+            // let websites = JSON.parse(localStorage["websites"]);
+            // setSites(websites);
 
         } catch(err) {
             console.log('there is no ingredients')
@@ -68,7 +71,7 @@ export function Personalise(props) {
 
 
     return (
-        <>
+        <div className="margins">
         <Tab setView={setView}/>
 
         {(view === "myList") &&
@@ -92,11 +95,12 @@ export function Personalise(props) {
 
         }
         {(view === 'history') && 
-            <div>
-                {view}
+            <div className="history-container">
+                <a className="history-item-container">
+                </a>
             </div>
         }
-        </>
+        </div>
 
     )
 }
