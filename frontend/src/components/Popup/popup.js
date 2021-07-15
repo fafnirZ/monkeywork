@@ -75,7 +75,14 @@ export function Popup(props) {
                 // from the backend and update local storage
                 if(props.ingredients) {
                     //post to backend
-
+                    fetch('https://localhost:5000/request', {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(inputIngredients)
+                    })
                     //call ocr done
                     props.OCRDone();
 
