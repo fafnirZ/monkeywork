@@ -8,7 +8,10 @@ export function SearchBar(props) {
     const [search, setSearch] = useState('');
     const [popUp, setPopUp] = React.useState(false);
     const [url, setUrl] = React.useState('');
-    const [img, setImg] = React.useState(null);
+    const [img, setImg] = React.useState();
+    const [image, setImage] = useState(false);
+
+    const [list, setList] = useState([])
 
     const popUpOpen = () => {
         setPopUp(true);
@@ -17,42 +20,65 @@ export function SearchBar(props) {
         setPopUp(false);
     }
 
-    /*
+    
     const parseImage = async (image) => {
-        Tesseract.recognize(
-            image,
-            'eng',
-            {logger: m => {
-                if (m.status === "recognizing text") {
-                    setLoading(m.progress)
-                }
-            }}
-        ).then(({data: {text} }) => {
-            const lines = text.split("\n")
-            setList(lines)
-            console.log(lines)
+
+        return new Promise((resolve,reject)=> {
+            Tesseract.recognize(
+                image,
+                'eng',
+                {logger: m => {
+                    if (m.status === "recognizing text") {
+                        //setLoading(m.progress)
+                    }
+                }}
+            ).then(({data: {text} }) => {
+                const lines = text.split("\n")
+                setList(lines)
+                resolve({});
+            })
         })
 
+
+
+    }
+
+    /*
+    const parseResults = () => {
+        
     }
     */
 
-    const OCRthenPopUp = () => {
-
+    const OCRthenPopUp = (e) => {
+        console.log(img)
+        parseImage(img)
+        .then(()=> {
+            popUpOpen();
+        })
     }
 
 
     const handlePaste = (e) => {
-        const item = e.clipboardData.items[0]
-        const image = item.getAsFile()
-        console.log(image)
-        console.log(typeof image)
-        setImage(true);
-        let fr = new FileReader();
-        fr.onload = function() {
-            document.getElementById('imgPlaceHolder').src = fr.result;
+
+        try {
+            const item = e.clipboardData.items[0]
+            const imagee = item.getAsFile()
+            if(item !== null) {
+                setImage(true);
+                let fr = new FileReader();
+                fr.onload = function() {
+                    document.getElementById('imgPlaceHolder').src = fr.result;
+                }
+                fr.readAsDataURL(imagee)
+                //sets img
+                console.log(imagee)
+                setImg(imagee)
+                console.log(img)
+            }
+        } catch (err) {
+            console.log(err);
         }
-        fr.readAsDataURL(image)
-          
+
     }
 
 
@@ -65,7 +91,7 @@ export function SearchBar(props) {
         setDisable(search.target.value === '');
     }
 
-    const [image, setImage] = useState(false);
+    
 
     return (
         <div>
@@ -97,7 +123,7 @@ export function SearchBar(props) {
                    
                     <div
                         className="Search-button-camera"
-                        onClick={popUpOpen}
+                        onClick={OCRthenPopUp}
                         >
                         <img src="Circle-camera.svg"/>
                     </div>
@@ -108,7 +134,7 @@ export function SearchBar(props) {
                         <img src='Circle-arrow.svg'/>             
                     </div>
                 </div>
-                {popUp && <Popup handlePopUp={popUpClose} url={url} img={img}/>}
+                {popUp && <Popup handlePopUp={popUpClose} url={url} img={img} ingredients={list}/>}
             </div>
             
         </div>

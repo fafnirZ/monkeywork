@@ -8,6 +8,7 @@ export function Popup(props) {
     const [inputIngredients, setInputIngredients] = React.useState({});
     const url = props.url;
     const img = props.img;
+    //const ingredients = props.ingredients
 
     const popRef = React.useRef();
 
@@ -22,15 +23,22 @@ export function Popup(props) {
 
     // fetch data and set
     React.useEffect(()=> {
-        // fetch data from backend and set data as inputIngredient state
-        fetch(url)
-        .then(response => {
-          return response.json();
-        })
-        .then(data =>  {
-          // console.log(data)
-          setInputIngredients(data);
-        })
+        if(! props.ingredients) {
+            // fetch data from backend and set data as inputIngredient state
+            fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data =>  {
+                // console.log(data)
+                setInputIngredients(data);
+            })
+        } else {
+            //setInputIngredients(props.ingredients)
+            console.log(props.ingredients)
+        }
+
+ 
     },[]);
 
 

@@ -160,10 +160,10 @@ export function Items(props) {
             >
             {/*(props.checkBox) && <Checkbox ingredient = {props.keyy}/>*/}
             {editable && 
-            <>
-            <input ref={valueRef} defaultValue={props.value.value} style={{'width': '30%'}}/>
-            <input ref={keyRef} defaultValue={props.keyy} style={{'width':'40%'}}/>                
-            </>
+                <>
+                <input ref={valueRef} defaultValue={props.value.value} style={{'width': '30%'}}/>
+                <input ref={keyRef} defaultValue={props.keyy} style={{'width':'40%'}}/>                
+                </>
             }
             {!editable && 
                 <div>
