@@ -73,7 +73,9 @@ export function Popup(props) {
 
                 // call post function then await response 
                 // from the backend and update local storage
+                
                 if(props.ingredients) {
+                    console.log(props.ingredients);
                     //post to backend
                     fetch('https://localhost:5000/request', {
                         method: 'POST',

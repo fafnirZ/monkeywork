@@ -75,6 +75,7 @@ export function SearchBar(props) {
                     setImg(imagee)
                     //console.log(img)
                 } else {
+
                     setUrl(e.clipboardData.getData('text/plain'));
                 }
 
@@ -85,9 +86,36 @@ export function SearchBar(props) {
 
     }
 
-    // React.useEffect(()=> {
-    //     setUrl('https://fafnirz.github.io/xxe/hosted/placeholder.json')
-    // },[])
+    const handleDrop = (e) => {
+        e.preventDefault();
+        try {
+            const item = e.dataTransfer.items[0]
+            const imagee = item.getAsFile()
+            if(item !== null) {
+                if(item.type !== 'text/plain') {
+                    setImage(true);
+                    let fr = new FileReader();
+                    fr.onload = function() {
+                        document.getElementById('imgPlaceHolder').src = fr.result;
+                    }
+                    fr.readAsDataURL(imagee)
+                    //sets img
+                    //console.log(imagee)
+                    setImg(imagee)
+                    //console.log(img)
+                } else {
+                    console.log(item)
+                }
+
+            
+            }
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
 
     const [disable, setDisable] = useState(true);
     function handleDisable(search) {
@@ -128,6 +156,7 @@ export function SearchBar(props) {
                         placeholder="Paste a recipe link or screenshot here!"
                         onChange={handleDisable}
                         onPaste={handlePaste}
+                        onDrop={handleDrop}
                     />
                         {image && 
                         <img id="imgPlaceHolder" 
