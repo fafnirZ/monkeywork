@@ -73,8 +73,17 @@ export function Popup(props) {
 
                 // call post function then await response 
                 // from the backend and update local storage
+                if(props.ingredients) {
+                    //post to backend
+
+                    //call ocr done
+                    props.OCRDone();
+
+                }
+
 
                 // close popup
+
                 props.handlePopUp();
                 return;
             }

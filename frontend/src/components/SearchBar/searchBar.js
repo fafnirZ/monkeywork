@@ -43,24 +43,23 @@ export function SearchBar(props) {
 
     }
 
-    
-    const parseResults = () => {
-        list.forEach((index, item)=> {
-            console.log(item)
-        })
-    }
+
     
 
-    const OCRthenPopUp = (e) => {
+    const OCRthenPopUp = () => {
         console.log(img)
         parseImage(img)
         .then(()=> {
-            parseResults();
+ 
             popUpOpen();
         })
 
     }
 
+    const OCRDone = () => {
+        setImage(false)
+        setImg()
+    }
 
     const handlePaste = (e) => {
 
@@ -68,16 +67,19 @@ export function SearchBar(props) {
             const item = e.clipboardData.items[0]
             const imagee = item.getAsFile()
             if(item !== null) {
-                setImage(true);
-                let fr = new FileReader();
-                fr.onload = function() {
-                    document.getElementById('imgPlaceHolder').src = fr.result;
+                if(item.type !== 'text/plain') {
+                    setImage(true);
+                    let fr = new FileReader();
+                    fr.onload = function() {
+                        document.getElementById('imgPlaceHolder').src = fr.result;
+                    }
+                    fr.readAsDataURL(imagee)
+                    //sets img
+                    //console.log(imagee)
+                    setImg(imagee)
+                    //console.log(img)
                 }
-                fr.readAsDataURL(imagee)
-                //sets img
-                console.log(imagee)
-                setImg(imagee)
-                console.log(img)
+
             }
         } catch (err) {
             console.log(err);
@@ -138,7 +140,7 @@ export function SearchBar(props) {
                         <img src='Circle-arrow.svg'/>             
                     </div>
                 </div>
-                {popUp && <Popup handlePopUp={popUpClose} url={url} img={img} ingredients={list}/>}
+                {popUp && <Popup handlePopUp={popUpClose} url={url} img={img} ingredients={list} OCRDone={OCRDone}/>}
             </div>
             
         </div>
