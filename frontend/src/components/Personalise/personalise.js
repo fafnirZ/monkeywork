@@ -14,6 +14,7 @@ export function Personalise(props) {
     const [view, setView] = useState('myList');
     const [force, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [site, setSite] = useState([]);
 
     const handleSubmit = (prevState, newState) => {
         try {
@@ -62,14 +63,25 @@ export function Personalise(props) {
             // let websites = JSON.parse(localStorage["websites"]);
             // setSites(websites);
 
+
         } catch(err) {
             console.log('there is no ingredients')
         }
 
     },[])
-    
 
+    React.useEffect(()=> {
+        let website = JSON.parse(localStorage["websites"]);
+        let current = site;
+        console.log(current);
+        Array.prototype.push.apply(current,website);
 
+        // console.log(site);
+        console.log(current);
+        setSite(current);
+        console.log(site);
+
+    },[])
     return (
         <div className="margins">
         <Tab setView={setView}/>
@@ -96,8 +108,26 @@ export function Personalise(props) {
         }
         {(view === 'history') && 
             <div className="history-container">
-                <a className="history-item-container">
-                </a>
+                
+                {site.map((value)=>{
+                    if (value !== '') {
+                    return (
+                        <a href={value}>
+                            <Items 
+                            keyy={value}
+                            value={{'value': ''}}
+                            editButton={false}
+                            deleteButton={false}
+                            style={{
+                                'color': 'black',
+                                'word-wrap': 'break-word',
+                        }}
+                            >
+                            </Items>
+                        </a>
+                    )}
+                })}
+
             </div>
         }
         </div>
